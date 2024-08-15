@@ -34,7 +34,7 @@ Clicking on a country will take the user to the country details page that displa
 
 #### List of countries and country details
 
-![Countries page](wireframes/CountryListPage.png)
+![Countries page](/CountryListPage.png)
 
 </p>
 </details>
@@ -51,7 +51,7 @@ Clicking on a country will take the user to the country details page that displa
 
 #### List of countries and country details
 
-![Country Details page](wireframes/CountryDetailsPage.png)
+![Country Details page](/CountryDetailsPage.png)
 
 </p>
 </details>
