@@ -17,7 +17,7 @@ Please complete the steps below and create an app based on the wireframe provide
 
 1. Please make a Code Review of _Continents.tsx_ and _Continents.test.tsx_. Create file _CODEREVIEW.md_ and put your thoughts inside.
 2. Fix test in _Continents.test.tsx_.
-3. Remove _Continents_ component and _README_ preview from _App.tsx_.
+3. Remove _Continents_ component from _App.tsx_.
 4. Implement the core functionality listed below.
 5. Include tests for your code.
 
