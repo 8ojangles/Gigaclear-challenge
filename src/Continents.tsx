@@ -1,8 +1,9 @@
 // @ts-nocheck
 import styled from 'styled-components';
 import { useQuery, gql } from '@apollo/client';
+import React from 'react';
 
-type ContinenntsComponent = () => {};
+type ContinenntsComponent = React.Node;
 
 const Continents: ContinenntsComponent = () => {
   const CONTINENTS = gql`
