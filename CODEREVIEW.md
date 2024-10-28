@@ -89,10 +89,23 @@ There should be adequate handling of each of these possibilities to inform the u
 
 Architecture
 ---
-Given this is a simple example for the purposes of review, this component still presents a number of problems. There is little possibility of reuse as the data fetch and rendered output are tightly coupled. It is inherantly a list component so would be better served via a composition of lower-level or primitive components. E.g.
+Given this is a simple example for the purposes of review, this component still presents a number of problems. There is little possibility of reuse as the data fetch and rendered output are tightly coupled. It is inherantly a list component so would be better served via a composition of lower-level or primitive components. The following example shows a rough idea of handling different display outputs.
 
 ```javascript
-export const Continents: React.FC = () => {
+type AllowedListTypes = "SimpleList" | "CardList";
+
+type Props = {
+    displayType: AllowedListTypes;
+    listProps: {
+        listType: string;
+        onclickHandler?: function
+    }
+}
+
+export const Continents: React.FC = (props: Props) => {
+
+    const { displayType, listProps } = props;
+
     // data fetching etc...
 
     // pass instance of function to allow for React to cache and optimise:
@@ -107,15 +120,35 @@ export const Continents: React.FC = () => {
                 <p>No Results</p>
             )}
             {data && data.length > 0 && (
-                <ListContainer listType="unordered">
-                    {data?.continents.map(({ name }) => (
-                        <ListItem key={`list-continents-${name}`} highlighted={isHighlighted} contents={name}>
-                    ))}
-                </ListContainer>
+                <>
+                    {displayType === 'SimpleList' && (
+                        <ListContainer {...listProps}>
+                            {data?.continents.map(({ name }) => (
+                                <ListItem key={`list-continents-${name}`} highlighted={isHighlighted} contents={name}>
+                            ))}
+                        </ListContainer>
+                    )} 
+                    {displayType === 'CardList' && (
+                        <CardListContainer {...listProps}>
+                            {data?.continents.map(({ name }) => (
+                                <CardItem key={`list-continents-${name}`} highlighted={isHighlighted} contents={name}>
+                            ))}
+                        </ListContainer>
+                    )} 
+                <>
             )}
         </div>
     );
 }
+// Example usage
+<Continents
+    displayType="SimpleList"
+    listProps={{
+        listType: "unordered",
+        onclickHandler: () => { console.log('Clicked') }
+    }}
+/>
+
 ```
 
-Those lower-level components (`ListContainer, ListItem`) could (should) be imported from a shared component folder or library maintained externally to the app. These can then be optimised and developed seperately.
+Those lower-level components (`ListContainer, ListItem, etc...`) could (should) be imported from a shared component folder or library maintained externally to the app. These can then be optimised and developed seperately. This could be further adapted with components passed in via the `children` prop to the Continents component so the output could be even more dynamic (and potentially renamed to "DataListComponent"!).
