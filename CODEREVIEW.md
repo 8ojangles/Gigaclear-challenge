@@ -23,6 +23,7 @@ Format
     - JSX error: `class` should be `className`
     - Unneccessary declaration (24).
     - No need for string-literal. Should be `class="font-700"`
+        - dynamic intopolation of string would interfere with Tailwind compilation, omitting required styles from outputted CSS bundle
     - `font-700` is not a valid Tailwind class, should be `font-bold`
 - **Line 26:** `const isEurope etc...`
     - Function argument and return should be typed:
