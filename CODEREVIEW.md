@@ -23,6 +23,7 @@ Format
     - JSX error: `class` should be `className`
     - Unneccessary declaration (24).
     - No need for string-literal. Should be `class="font-700"`
+    - `font-700` is not a valid Tailwind class, should be `font-bold`
 - **Line 26:** `const isEurope etc...`
     - Function argument and return should be typed:
         - `const isEurope = (c: string): boolean =>`
