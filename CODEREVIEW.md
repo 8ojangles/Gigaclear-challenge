@@ -44,11 +44,12 @@ Format
         - ``<div key={`list-continents-${name}`} className={isEurope(name) && 'text-red-800'}>``
             - note that in-built `index` parameter should not be used as, or part of, the key.
 
+
 Structure
 ---
 The `CONTINENTS` query and `ContinentsQery` interface (lines 7 and 16) are declared within the body of the component.
 
-These should either be extrracted and declared outside (above) the component function, or better still, declared in a seperate definitions file and imported in the `Continents` component.
+These should either be extracted and declared outside (above) the component function, or better still, declared in a seperate definitions file and imported in the `Continents` component.
 
 This would allow for the codebase to be structured in a consistant way with other queries, mutations and definitions, plus be able to reuse elsewhere in the application.
 
@@ -154,3 +155,76 @@ export const Continents: React.FC = (props: Props) => {
 ```
 
 Those lower-level components (`ListContainer, ListItem, etc...`) could (should) be imported from a shared component folder or library maintained externally to the app. These can then be optimised and developed seperately. This could be further adapted with components passed in via the `children` prop to the Continents component so the output could be even more dynamic (and potentially renamed to "DataListComponent"!).
+
+Tests (Continents.test.tsx)
+---
+The single test in this file, when fixed, is too simplistic to be useful in a production setting.
+
+There should be tests to cover the potential outcomes of the data fetch (Loading, loaded and error), the original case to find an example and a wider test to check that all data has been loaded. A `mock` of the data fetching can be created using the API schema as a guide, then passed into ApolloClient's `MockedProvider` helper to simulate the fetch during tests. For example, using the demo code I created above:
+```javascript
+const GET_CONTINENTS = gql`
+  query GetContinents {
+    continents {
+      name
+    }
+  }
+`;
+
+// Mock data for the GET_CONTINENTS query
+const mocks = [
+  {
+    request: {
+      query: GET_CONTINENTS,
+    },
+    result: {
+      data: {
+        continents: [
+          { name: 'Europe' },
+          { name: 'Asia' },
+        ],
+      },
+    },
+  },
+];
+
+it('should display loading state initially', () => {
+    render(
+        <MockedProvider mocks={mocks} addTypename={false}>
+            <Continents />
+        </MockedProvider>
+    );
+
+    expect(screen.getByText('Fetching data...')).toBeInTheDocument();
+});
+
+it('should display error message on error', async () => {
+    const errorMocks = [
+        {
+        request: {
+            query: GET_CONTINENTS,
+        },
+        error: new Error('An error occurred'),
+        },
+    ];
+
+    render(
+        <MockedProvider mocks={errorMocks} addTypename={false}>
+            <Continents />
+        </MockedProvider>
+    );
+
+    const errorMessage = await waitFor(() => screen.getByText('Error :('));
+    expect(errorMessage).toBeInTheDocument();
+});
+
+it('should display Europe in the list of Continents', async () => {
+    render(
+        <MockedProvider mocks={mocks} addTypename={false}>
+            <Continents />
+        </MockedProvider>
+    );
+
+    const item = await waitFor(() => screen.getByText('Europe'));
+    expect(item).toBeInTheDocument();
+});
+```
