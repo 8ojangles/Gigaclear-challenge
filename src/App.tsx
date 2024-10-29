@@ -1,5 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import Continents from './Continents';
+import Countries from './Countries';
 
 const client = new ApolloClient({
   uri: 'https://countries.trevorblades.com',
@@ -9,7 +9,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Continents />
+        <Countries />
     </ApolloProvider>
   );
 }
