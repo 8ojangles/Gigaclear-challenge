@@ -143,11 +143,6 @@ export const Continents: React.FC = (props: Props) => {
         </div>
     );
 }
-// Example usage
-<Continents
-    displayType="SimpleList"
-    listProps={{ listType: "unordered", onclickHandler: () => { console.log('Clicked') } /\}\}/
-/>
 
 ```
 
