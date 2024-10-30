@@ -148,7 +148,7 @@ export const Continents: React.FC = (props: Props) => {
     displayType="SimpleList"
     listProps={{
         listType: "unordered",
-        onclickHandler: () => { console.log('Clicked') }
+        onclickHandler: () => { console.log('Clicked'); }
     }}
 />
 
