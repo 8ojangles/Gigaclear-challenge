@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/gigaclear-challenge/static/css/main.3d517022.css",
+    "main.js": "/gigaclear-challenge/static/js/main.1611f699.js",
+    "static/js/453.e44909fe.chunk.js": "/gigaclear-challenge/static/js/453.e44909fe.chunk.js",
+    "index.html": "/gigaclear-challenge/index.html",
+    "main.3d517022.css.map": "/gigaclear-challenge/static/css/main.3d517022.css.map",
+    "main.1611f699.js.map": "/gigaclear-challenge/static/js/main.1611f699.js.map",
+    "453.e44909fe.chunk.js.map": "/gigaclear-challenge/static/js/453.e44909fe.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3d517022.css",
+    "static/js/main.1611f699.js"
+  ]
+}
