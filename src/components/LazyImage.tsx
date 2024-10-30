@@ -1,46 +1,50 @@
-import React, { useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import imgLoading from '../images/imageLoading64.png';
+import { useState } from 'react';
 import imgNotFound from '../images/imageNotFound64.png';
 
-interface LazyImageProps {
-    src: string;
-    alt: string;
-    width?: number;
-    height?: number;
-    placeholder?: string;
-    errorPlaceholder?: string;
+type Props = {
+    imgUrl: string;
+    imgAlt: string;
+    scrollPosition: any;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({
-    src,
-    alt,
-    width = 200,
-    height = 200,
-    placeholder = imgLoading,
-    errorPlaceholder = imgNotFound,
-}) => {
-    const [imageSrc, setImageSrc] = useState<string>(placeholder);
-    const [isError, setIsError] = useState<boolean>(false);
+const LazyImage: React.FC<Props> = (props: Props) => {
+    
+    const { imgUrl, imgAlt, scrollPosition } = props;
 
-    const handleImageLoad = () => {
-        setImageSrc(src);
-    };
+    const [ imgLoadError, setImgLoadError ] = useState<boolean>(false);
+    const [ defaultVisibility, setDefaultVisibility ] = useState<boolean>(false);
 
-    const handleImageError = () => {
-        setIsError(true);
-        setImageSrc(errorPlaceholder);
-    };
+    const handleImageLoadSuccess = () => {
+        setDefaultVisibility(true);
+    }
+
+    const handleImgLoadError = () => {
+        setImgLoadError(true);
+    }
 
     return (
-        <img
-            src={imageSrc}
-            alt={alt}
-            width={width}
-            height={height}
-            onLoad={handleImageLoad}
-            onError={handleImageError}
-            className="object-cover"
-        />
+        <div className="mr-4">
+            {imgLoadError === false ? (
+               <LazyLoadImage
+                    threshold={250}
+                    effect="opacity"
+                    alt={`National Flag for ${imgAlt}`}
+                    height={64}
+                    src={`https://flagsapi.com/${imgUrl}/flat/64.png`} // use normal <img> attributes as props
+                    width={64}
+                    placeholderSrc={imgLoading}
+                    scrollPosition={scrollPosition}
+                    onError={handleImgLoadError}
+                    onLoad={handleImageLoadSuccess}
+                    visibleByDefault={defaultVisibility}
+                />
+            ) : (
+                <img width={64} height={64} src={imgNotFound} />
+            )}
+        </div>
     );
 };
 
