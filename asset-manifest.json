@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Gigaclear-challenge/static/css/main.86d20098.css",
-    "main.js": "/Gigaclear-challenge/static/js/main.93f181cc.js",
+    "main.css": "/Gigaclear-challenge/static/css/main.42ddce7f.css",
+    "main.js": "/Gigaclear-challenge/static/js/main.29d89586.js",
     "static/js/453.e44909fe.chunk.js": "/Gigaclear-challenge/static/js/453.e44909fe.chunk.js",
     "index.html": "/Gigaclear-challenge/index.html",
-    "main.86d20098.css.map": "/Gigaclear-challenge/static/css/main.86d20098.css.map",
-    "main.93f181cc.js.map": "/Gigaclear-challenge/static/js/main.93f181cc.js.map",
+    "main.42ddce7f.css.map": "/Gigaclear-challenge/static/css/main.42ddce7f.css.map",
+    "main.29d89586.js.map": "/Gigaclear-challenge/static/js/main.29d89586.js.map",
     "453.e44909fe.chunk.js.map": "/Gigaclear-challenge/static/js/453.e44909fe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.86d20098.css",
-    "static/js/main.93f181cc.js"
+    "static/css/main.42ddce7f.css",
+    "static/js/main.29d89586.js"
   ]
 }
