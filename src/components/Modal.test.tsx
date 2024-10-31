@@ -35,8 +35,8 @@ describe('Modal', () => {
 
     it('should call onClose when the close button is clicked', () => {
         render(<Modal selectedCountry={mockCountry} onClose={mockOnClose} />);
-        
-        fireEvent.click(screen.getByText('Close'));
+        const button = screen.getByText((content, element) => element?.tagName.toLowerCase() === 'button');
+        fireEvent.click(button);
         expect(mockOnClose).toHaveBeenCalled();
     });
 });

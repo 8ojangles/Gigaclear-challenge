@@ -28,7 +28,7 @@ const Continents: ContinenntsComponent = () => {
 
   return (
     <div>
-      <h3 class={`font-${bold}`}>Continents:</h3>
+      <h3 className={`font-${bold}`}>Continents:</h3>
       {data?.continents.map(({ name }) => (
         <div className={isEurope(name) && 'text-red-800'}>{name}</div>
       ))}
