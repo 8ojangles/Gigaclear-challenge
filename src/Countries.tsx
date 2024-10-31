@@ -48,6 +48,10 @@ const Countries: React.FC = () => {
         };
     }
 
+    const onSearchClear = () => {
+        setSearch('');
+    }
+
     const onSearchBlurHandler = (): void => {
         if (searchError) {
             setSearchError(false);
@@ -71,17 +75,30 @@ const Countries: React.FC = () => {
             <div className="flex h-screen flex-col">
                 <header className="bg-slate-200 border-b border-slate-400 py-4 shadow-md z-30 fixed top-0 w-full">
                     <div className="container mx-auto max-w-screen-xl px-4 my-2 flex items-center">
-                        <div className="w-56 h-12">
+                        <div className="w-36 md:w-56 h-8 md:h-12">
                             <GigaclearLogo />
                         </div>
-                        <h1 className="text-4xl font-bold mb-4">Country Finder</h1>
+                        <h1 className="text-xl md:text-4xl font-bold mb-2 md:mb-4">Country Finder</h1>
                     </div>
-                    <div className="container mx-auto max-w-screen-xl px-4 flex justify-between">
-                        <section className="flex items-center">
+                    <div className="container mx-auto max-w-screen-xl px-4 flex justify-between flex-col sm:flex-row">
+                        <section className="flex items-center flex-col md:flex-row">
                             <label htmlFor="country-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                            <div className="relative">
+                            <div className="relative w-full sm:w-auto">
                                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none w-8">
                                     <SearchIconSVG size={4} primaryColor="text-gray-400"/>
+                                </div>
+                                <div className="absolute inset-y-0 end-5 sm:end-7 flex items-center ps-3 w-8">
+                                    <button
+                                        type="button"
+                                        title="Clear Search"
+                                        onClick={onSearchClear}
+                                        className="bg-white border border-gray-400 rounded-sm p-1 sm:p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                                    >
+                                        <span className="sr-only">Clear Search</span>
+                                        <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
                                 </div>
                                 <input
                                     type="text"
@@ -90,14 +107,14 @@ const Countries: React.FC = () => {
                                     value={search}
                                     onChange={onSearchChangeHandler}
                                     onBlur={onSearchBlurHandler}
-                                    className="block sm:w-full md:w-64 p-3 ps-10 text-md text-gray-900 border border-gray-300 rounded-lg  bg-gray-50 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="block w-full sm:w-72 py-2 sm:py-3 ps-10 pr-12 text-md text-gray-900 border border-gray-300 rounded-sm  bg-gray-50 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 />
                                 {searchError && (
-                                    <p className="p-3 absolute z-30 bg-gray-700 text-white rounded text-sm mt-1 top-15 transition-opacity">Only letters, dashes (-) and spaces are valid</p>
+                                    <p className="p-3 absolute z-30 bg-gray-700 text-white rounded text-sm mt-2 top-15 transition-opacity">Only letters, dashes (-) and spaces are valid</p>
                                 )}
                             </div>
                             {searchedCountries.length > 0 && (
-                                <p className="ml-4">{`${searchedCountries.length} Results, (showing ${filteredByContinent.length}${continent !== '' ? ' in '+continent : ''})`}</p>
+                                <p className="ml-1 md:ml-4 py-2 mt-0 sm:mt-1 md:mt-0 sm:py-0 self-start md:self-center">{`${searchedCountries.length} Results, (showing ${filteredByContinent.length}${continent !== '' ? ' in '+continent : ''})`}</p>
                             )}
                         </section>
                         <section>
@@ -106,7 +123,7 @@ const Countries: React.FC = () => {
                                 id="filter-continents"
                                 value={continent}
                                 onChange={onFilterChangeHandler}
-                                className="block sm:w-full md:w-64 px-4 py-3 text-md text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                className="block w-full sm:w-64 md:w-64 px-4 py-2 sm:py-3 text-md text-gray-900 border border-gray-300 rounded-sm bg-gray-50 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             >   
                                 <option value="">All Continents</option>
                                 {uniqueContinents.map((cont: any) => (
@@ -127,7 +144,7 @@ const Countries: React.FC = () => {
                                         <p className="text-2xl font-bold text-gray-400 text-center">There was a problem getting the data. Refresh the page to try again (F5) or come back later.</p>
                                     </div>
                                 ) : (
-                                    <div className="container mx-auto pt-44 px-4 pb-4">
+                                    <div className="container mx-auto pt-56 sm:pt-44 px-4 pb-4">
                                         <CardGrid
                                             countries={filteredByContinent}
                                             onCardClick={onCardClick}

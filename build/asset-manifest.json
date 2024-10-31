@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.3d517022.css",
-    "main.js": "/static/js/main.dcb3ca40.js",
-    "static/js/453.ed3810f9.chunk.js": "/static/js/453.ed3810f9.chunk.js",
-    "index.html": "/index.html",
-    "main.3d517022.css.map": "/static/css/main.3d517022.css.map",
-    "main.dcb3ca40.js.map": "/static/js/main.dcb3ca40.js.map",
-    "453.ed3810f9.chunk.js.map": "/static/js/453.ed3810f9.chunk.js.map"
+    "main.css": "/Gigaclear-challenge/static/css/main.3d517022.css",
+    "main.js": "/Gigaclear-challenge/static/js/main.254ff7dc.js",
+    "static/js/453.e44909fe.chunk.js": "/Gigaclear-challenge/static/js/453.e44909fe.chunk.js",
+    "index.html": "/Gigaclear-challenge/index.html",
+    "main.3d517022.css.map": "/Gigaclear-challenge/static/css/main.3d517022.css.map",
+    "main.254ff7dc.js.map": "/Gigaclear-challenge/static/js/main.254ff7dc.js.map",
+    "453.e44909fe.chunk.js.map": "/Gigaclear-challenge/static/js/453.e44909fe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3d517022.css",
-    "static/js/main.dcb3ca40.js"
+    "static/js/main.254ff7dc.js"
   ]
 }
