@@ -30,7 +30,7 @@ const Continents: ContinenntsComponent = () => {
     <div>
       <h3 className={`font-${bold}`}>Continents:</h3>
       {data?.continents.map(({ name }) => (
-        <div className={isEurope(name) && 'text-red-800'}>{name}</div>
+        <div key={name} className={isEurope(name) ? 'text-red-800' : undefined}>{name}</div>
       ))}
     </div>
   );
