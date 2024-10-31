@@ -53,6 +53,13 @@ I have stuck to the provided tooling as much as possible with some small additio
 I have used the following API to get flag images for each of the countries:
 [https://flagsapi.com](https://flagsapi.com).
 
+There is a problem rendering flags from the "emoji" code, that requires some workarounds. Some context:
+[https://stackoverflow.com/questions/54519758/flag-emojis-not-rendering](https://stackoverflow.com/questions/54519758/flag-emojis-not-rendering)
+[https://answers.microsoft.com/en-us/windows/forum/all/country-emoji-for-windows/78a3e92b-02a8-4e7c-814e-c1c0596eaf4e](https://answers.microsoft.com/en-us/windows/forum/all/country-emoji-for-windows/78a3e92b-02a8-4e7c-814e-c1c0596eaf4e)
+
+Some fonts support them, some don't. Some OSs support them, some dont.
+
+
 ```
 react-leaflet and leaflet
 ```
