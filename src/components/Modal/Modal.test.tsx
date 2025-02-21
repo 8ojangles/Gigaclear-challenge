@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import Modal from './Modal';
-import { Country } from './../types/country';
+import { Modal } from './Modal';
+import { Country } from '../../types/country';
 
 describe('Modal', () => {
     const mockCountry: Country = {
@@ -17,12 +17,12 @@ describe('Modal', () => {
     const mockOnClose = jest.fn();
 
     it('should not render when selectedCountry is null', () => {
-        const { container } = render(<Modal selectedCountry={null} onClose={mockOnClose} />);
+        const { container } = render(<Modal selected={null} onClose={mockOnClose} />);
         expect(container.firstChild).toBeNull();
     });
 
-    it('should render country details when selectedCountry is provided', () => {
-        render(<Modal selectedCountry={mockCountry} onClose={mockOnClose} />);
+    it('should render country details when selected is provided', () => {
+        render(<Modal selected={mockCountry} onClose={mockOnClose} />);
         expect(screen.getByText('Continent:')).toBeInTheDocument();
         expect(screen.getByText('North America')).toBeInTheDocument();
         expect(screen.getByText('Capital:')).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe('Modal', () => {
     });
 
     it('should call onClose when the close button is clicked', () => {
-        render(<Modal selectedCountry={mockCountry} onClose={mockOnClose} />);
+        render(<Modal selected={mockCountry} onClose={mockOnClose} />);
         const button = screen.getByText((content, element) => element?.tagName.toLowerCase() === 'button');
         fireEvent.click(button);
         expect(mockOnClose).toHaveBeenCalled();

@@ -23,7 +23,7 @@ function getButtonTypeClasses(btnType: string): string {
     }
 }
 
-type Props = {
+type ButtonProps = {
     btnType?: 'skeleton' | 'ghost' | 'primary' | 'secondary' | 'tertiary' | 'danger';
     borderRounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full';
     label?: string;
@@ -34,7 +34,7 @@ type Props = {
     customClasses?: string;
 }
 
-const ButtonComponent: React.FC<Props> = (props: Props) => {
+const ButtonComponent: React.FC<ButtonProps> = (props: ButtonProps) => {
     
     const {
         btnType = 'primary',
@@ -63,4 +63,4 @@ const ButtonComponent: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default ButtonComponent;
+export { ButtonComponent };

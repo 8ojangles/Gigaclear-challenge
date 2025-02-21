@@ -2,6 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "lib": [
+      "ESNext.Array",
+      "ES2023.Array",
       "dom",
       "dom.iterable",
       "esnext"

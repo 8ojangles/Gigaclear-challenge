@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Card from './Card';
-import { Country } from './../types/country';
+import { Country } from '../../types/country';
 
 describe('Card', () => {
     const mockCountry: Country = {
@@ -17,14 +17,14 @@ describe('Card', () => {
     const mockOnCardClick = jest.fn();
 
     it('should render country details', () => {
-        render(<Card country={mockCountry} onCardClick={mockOnCardClick} scrollPosition={{}} />);
+        render(<Card country={mockCountry} onCardClick={mockOnCardClick} />);
         
         expect(screen.getByText('United States')).toBeInTheDocument();
         expect(screen.getByText('North America')).toBeInTheDocument();
     });
 
     it('should call onCardClick when the card is clicked', () => {
-        render(<Card country={mockCountry} onCardClick={mockOnCardClick} scrollPosition={{}} />);
+        render(<Card country={mockCountry} onCardClick={mockOnCardClick} />);
         
         fireEvent.click(screen.getByText('United States'));
         expect(mockOnCardClick).toHaveBeenCalledWith(mockCountry);

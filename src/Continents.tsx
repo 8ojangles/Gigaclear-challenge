@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { useQuery, gql } from '@apollo/client';
 import React from 'react';
 
-type ContinenntsComponent = React.Node;
+type ContinentsComponent = React.Node;
 
-const Continents: ContinenntsComponent = () => {
+const Continents: ContinentsComponent = () => {
   const CONTINENTS = gql`
     query Continents {
       continents {

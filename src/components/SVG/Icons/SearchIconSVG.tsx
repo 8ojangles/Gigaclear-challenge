@@ -21,4 +21,4 @@ const SearchIconSVG: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default SearchIconSVG;
+export { SearchIconSVG };

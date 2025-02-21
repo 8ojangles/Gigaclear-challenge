@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 
 interface Props {
     countryName: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import CardGrid from './CardGrid';
-import { Country } from './../types/country';
+import { CardGrid } from './CardGrid';
+import { Country } from './../../types/country';
 
 describe('CardGrid', () => {
     const mockCountries: Country[] = [
@@ -11,13 +11,13 @@ describe('CardGrid', () => {
 
     const mockOnCardClick = jest.fn();
 
-    it('should render "No countries found" message when countries array is empty', () => {
-        render(<CardGrid countries={[]} onCardClick={mockOnCardClick} />);
-        expect(screen.getByText('No countries found. Try a different name.')).toBeInTheDocument();
+    it('should render "No results found" message when countries array is empty', () => {
+        render(<CardGrid results={[]} onCardClick={mockOnCardClick} />);
+        expect(screen.getByText('No results found. Try a different name.')).toBeInTheDocument();
     });
 
     it('should render cards when countries are provided', () => {
-        render(<CardGrid countries={mockCountries} onCardClick={mockOnCardClick} />);
+        render(<CardGrid results={mockCountries} onCardClick={mockOnCardClick} />);
         
         mockCountries.forEach((country) => {
             expect(screen.getByText(country.name)).toBeInTheDocument();
