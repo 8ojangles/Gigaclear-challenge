@@ -1,12 +1,12 @@
 import React from 'react';
 
-type Props = {
+type SearchIconSVGProps = {
     size?: number; // Tailwind sizing (rems)
     primaryColor?: string; // Tailwind color class
     primaryColorDark?: string; // Tailwind color class
 }
 
-const SearchIconSVG: React.FC<Props> = (props: Props) => {
+const SearchIconSVG: React.FC<SearchIconSVGProps> = (props: SearchIconSVGProps) => {
 
     const {
         size = 4,

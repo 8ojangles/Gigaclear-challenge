@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
-import { GET_COUNTRIES, GET_CONTINENTS } from '../API/queries';
-import { Country } from '../types/country';
-import { Continent } from '../types/continent';
+import { GET_COUNTRIES, GET_CONTINENTS } from '../../API/queries';
+import { Country } from '../../types/country';
+import { Continent } from '../../types/continent';
 
 interface FetchDataResult {
     loading: boolean;

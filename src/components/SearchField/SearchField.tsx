@@ -3,7 +3,7 @@ import { Country } from '../../types/country';
 import { SearchIconSVG } from '../SVG/Icons/SearchIconSVG';
 import { ButtonComponent } from '../Button/Button';
 
-type SearchFieldProps = {
+interface SearchFieldProps {
     search: string;
     searchError: boolean;
     searchedCountries: Country[];
@@ -11,7 +11,6 @@ type SearchFieldProps = {
     continent: string;
     placeholder?: string;
     onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    // onSearchBlur: () => void;
     onSearchClear: () => void;
 }
 
@@ -24,7 +23,6 @@ const SearchField: React.FC<SearchFieldProps> = (props: SearchFieldProps) => {
         filteredByContinent,
         continent,
         onSearchChange,
-        // onSearchBlur,
         onSearchClear,
         placeholder = "Start Typing to Search"
     } = props;
@@ -44,7 +42,6 @@ const SearchField: React.FC<SearchFieldProps> = (props: SearchFieldProps) => {
                         onClick={onSearchClear}
                         label="Clear"
                         borderRounded="sm"
-                        customClasses='rounded-sm'
                     />
                 </div>
                 <input
@@ -53,7 +50,6 @@ const SearchField: React.FC<SearchFieldProps> = (props: SearchFieldProps) => {
                     placeholder={placeholder}
                     value={search}
                     onChange={onSearchChange}
-                    // onBlur={onSearchBlur}
                     className="block w-full sm:w-72 py-2 sm:py-3 ps-10 pr-8 text-md text-gray-900 border border-gray-300 rounded-sm  bg-gray-50 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 {searchError && (

@@ -9,7 +9,6 @@ interface SearchBarProps {
     searchError: boolean;
     onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onSearchClear: () => void;
-    // onSearchBlur: () => void;
     searchedCountries: Country[],
     filteredByContinent: Country[],
     continent: string,
@@ -24,7 +23,6 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
         searchError,
         onSearchChange,
         onSearchClear,
-        // onSearchBlur,
         searchedCountries,
         filteredByContinent,
         continent,
@@ -42,7 +40,6 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
                 filteredByContinent={filteredByContinent}
                 continent={continent}
                 onSearchChange={onSearchChange}
-                // onSearchBlur={onSearchBlur}
                 onSearchClear={onSearchClear}
                 placeholder={searchPlaceholder}
             />

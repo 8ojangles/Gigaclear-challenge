@@ -1,12 +1,12 @@
 import { Country } from '../../types/country';
-import Card from '../Card/Card';
+import { Card } from '../Card/Card';
 
-type Props = {
+interface CardGridProps {
     results: Country[];
     onCardClick: Function;
 }
 
-const CardGrid: React.FC<Props> = (props: Props) => {
+const CardGrid: React.FC<CardGridProps> = (props: CardGridProps) => {
 
     const { results, onCardClick } = props;
 

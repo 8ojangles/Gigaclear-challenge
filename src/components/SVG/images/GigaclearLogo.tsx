@@ -67,4 +67,4 @@ const GigaclearLogoSVG: React.FC = () => {
     );
 };
 
-export default GigaclearLogoSVG;
+export { GigaclearLogoSVG };

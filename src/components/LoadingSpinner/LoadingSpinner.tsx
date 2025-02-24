@@ -1,4 +1,4 @@
-type Props = {
+interface SpinnerProps {
     size?: number; // Tailwind sizing (rems, max=10)
     primaryColor?: string; // Tailwind color class
     secondaryColor?: string; // Tailwind color class
@@ -6,7 +6,7 @@ type Props = {
     height?: number; // Tailwind sizing
 }
 
-const LoadingSpinner: React.FC<Props> = (props: Props) => {
+const LoadingSpinner: React.FC<SpinnerProps> = (props: SpinnerProps) => {
 
     const {
         size = 6,
@@ -15,8 +15,6 @@ const LoadingSpinner: React.FC<Props> = (props: Props) => {
         zLayer = 50,
         height ="screen"
     } = props;
-
-
 
     return (
         <div className={`container mx-auto z-${zLayer} flex justify-center items-center p-8 bg-black/25 h-${height}`}>
@@ -31,4 +29,4 @@ const LoadingSpinner: React.FC<Props> = (props: Props) => {
     );
 }
 
-export default LoadingSpinner;
+export { LoadingSpinner};

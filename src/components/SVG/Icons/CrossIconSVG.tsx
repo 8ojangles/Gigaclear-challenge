@@ -1,12 +1,12 @@
 import React from 'react';
 
-type Props = {
+interface CrossIconSVGProps {
     size?: number; // Tailwind sizing (rems)
     primaryColor?: string; // Tailwind color class
     primaryColorDark?: string; // Tailwind color class
 }
 
-const CrossIconSVG: React.FC<Props> = (props: Props) => {
+const CrossIconSVG: React.FC<CrossIconSVGProps> = (props: CrossIconSVGProps) => {
 
     const {
         size = 6,
@@ -21,4 +21,4 @@ const CrossIconSVG: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default CrossIconSVG;
+export { CrossIconSVG };

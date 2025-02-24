@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Modal } from './components/Modal/Modal';
 import { Country } from './types/country';
+import { useFetchData } from './hooks/useFetchData/useFetchData';
+import { useSearchFilter } from './hooks/useSearchFilter/useSearchFilter';
 import { CardGrid } from './components/CardGrid/CardGrid';
-import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
+import { LoadingSpinner } from './components/LoadingSpinner/LoadingSpinner';
 import { Header } from './components/Header/Header';
 import { LoadingErrorMessage } from './components/LoadingErrorMessage/LoadingErrorMessage';
 import { SearchBar } from './components/SearchBar/SearchBar';
-import { useFetchData } from './hooks/useFetchData';
-import { useSearchFilter } from './hooks/useSearchFilter';
 
 const Countries: React.FC = () => {
     const { loading, error, countries } = useFetchData();

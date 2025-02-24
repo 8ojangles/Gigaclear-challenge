@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useSearchFilter } from './useSearchFilter';
-import { Country } from '../types/country';
+import { Country } from '../../types/country';
 
 const mockCountries: Country[] = [
     { code: 'US', name: 'United States', continent: { name: 'North America' }, capital: 'Washington, D.C.', currency: 'USD', languages: [{ name: 'English' }], emoji: '🇺🇸' },

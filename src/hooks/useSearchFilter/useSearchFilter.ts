@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Country } from '../types/country';
-import { getCountriesToSorted, getSearchedCountries, getFilteredByContinent, getUniqueContinents } from '../utilities/countryUtils';
-import { isValidCountryInput } from '../utilities/text-utilities';
+import { Country } from '../../types/country';
+import { getCountriesToSorted, getSearchedCountries, getFilteredByContinent, getUniqueContinents } from '../../utilities/countryUtils';
+import { isValidCountryInput } from '../../utilities/text-utilities';
 
 interface SearchFilterResult {
     search: string;
