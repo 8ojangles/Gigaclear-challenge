@@ -38,7 +38,7 @@ const SearchField: React.FC<SearchFieldProps> = (props: SearchFieldProps) => {
                 </div>
                 <div className="absolute inset-y-0 end-8 sm:end-10 flex items-center ps-3 w-8">
                     <ButtonComponent
-                        btnType="skeleton"
+                        colorTheme="skeleton"
                         onClick={onSearchClear}
                         label="Clear"
                         borderRounded="sm"
@@ -50,7 +50,7 @@ const SearchField: React.FC<SearchFieldProps> = (props: SearchFieldProps) => {
                     placeholder={placeholder}
                     value={search}
                     onChange={onSearchChange}
-                    className="block w-full sm:w-72 py-2 sm:py-3 ps-10 pr-8 text-md text-gray-900 border border-gray-300 rounded-sm  bg-gray-50 focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="input-base sm:w-72 py-2 sm:py-3 ps-10 pr-8"
                 />
                 {searchError && (
                     <p className="p-3 absolute z-30 bg-gray-700 text-white rounded text-sm mt-2 top-15 transition-opacity">Only letters, dashes (-) and spaces are valid</p>

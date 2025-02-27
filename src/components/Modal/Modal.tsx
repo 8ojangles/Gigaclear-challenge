@@ -24,13 +24,13 @@ const Modal: React.FC<ModalProps> = (props: ModalProps) => {
                         <ButtonComponent
                             borderRounded='full'
                             title="Close Modal"
-                            btnType='ghost'
+                            colorTheme='ghost'
                             onClick={onClose}
                             icon={<CrossIconSVG size={8}/>}
                         />
                     </div>
                     <header className="flex items-center border-b border-gray-500 py-4 px-2 sm:px-4">
-                        <FlagHeader country={selected} textSize={"xxl"} />
+                        <FlagHeader country={selected} textSize={"xl2"} />
                     </header>
                     <article className="bg-gray-100 pt-4 px-2 sm:px-4 rounded-b-sm">
                         <InfoItemList country={selected} />

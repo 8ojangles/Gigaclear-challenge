@@ -1,5 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import Countries from './Countries';
+import { Countries } from './Countries';
 
 const client = new ApolloClient({
   uri: 'https://countries.trevorblades.com',
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export { App };

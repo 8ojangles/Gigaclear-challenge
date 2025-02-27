@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Modal } from './components/Modal/Modal';
 import { Country } from './types/country';
 import { useFetchData } from './hooks/useFetchData/useFetchData';
 import { useSearchFilter } from './hooks/useSearchFilter/useSearchFilter';
-import { CardGrid } from './components/CardGrid/CardGrid';
 import { LoadingSpinner } from './components/LoadingSpinner/LoadingSpinner';
-import { Header } from './components/Header/Header';
 import { LoadingErrorMessage } from './components/LoadingErrorMessage/LoadingErrorMessage';
+import { Header } from './components/Header/Header';
 import { SearchBar } from './components/SearchBar/SearchBar';
+import { CardGrid } from './components/CardGrid/CardGrid';
+import { Modal } from './components/Modal/Modal';
 
 const Countries: React.FC = () => {
     const { loading, error, countries } = useFetchData();
@@ -52,10 +52,10 @@ const Countries: React.FC = () => {
                         filteredByContinent={filteredByContinent}
                     />
                 </Header>
-                <main className="bg-gray-300 flex-1 relative">
-                    <div className="container mx-auto max-w-screen-xl flex-1 flex">
+                <main className="bg-slate-100 flex-1 relative">
+                    <div className="container-constrained flex-1 flex">
                         {loading && (
-                            <LoadingSpinner size={20} zLayer={20} />
+                            <LoadingSpinner size={20} zPosition="z20" />
                         )}
                         {error && (
                             <LoadingErrorMessage />
@@ -77,4 +77,4 @@ const Countries: React.FC = () => {
     );
 };
 
-export default Countries;
+export { Countries };

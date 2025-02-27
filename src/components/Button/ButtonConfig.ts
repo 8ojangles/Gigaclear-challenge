@@ -1,21 +1,27 @@
-import { StringMap } from '../../types/generic';
 
-export const btnColorVariants: StringMap = {
-    primary: 'bg-indigo-600 text-white hover:bg-indigo-700',
-    secondary: 'bg-gray-600 text-white hover:bg-gray-700',
-    tertiary: 'bg-white text-gray-600 hover:text-gray-700',
-    error: 'bg-red-600 text-white hover:bg-red-700',
-    skeleton: 'bg-white border border-gray-400 text-gray-400 hover:text-gray-500 hover:bg-gray-100',
-    ghost: 'bg-transparent text-gray-400 hover:text-gray-500 hover:bg-gray-100'
-}
+/**
+ * @namespace
+ * @object btnColorVariants 
+ * @description Button color variants - Themed button styling types for constructing button color variants in Button Component 'btnType' prop. Classes are defined in top level index.css tailwind file
+ * @see index.css
+ */
+export const btnColorVariants = {
+    primary: 'btn-primary',
+    secondary: 'btn-secondary',
+    tertiary: 'btn-tertiary',
+    error: 'btn-error ',
+    skeleton: 'btn-skeleton',
+    ghost: 'btn-ghost'
+};
 
-export const btnRoundedVariants: StringMap = {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    xl: 'rounded-xl',
-    xxl: 'rounded-2xl',
-    xxxl: 'rounded-3xl',
-    full: 'rounded-full'
-}
+/**
+ * @type BtnColorVariantType
+ * @description BtnColorVariantType - Allowed list of values for styling buttons derived from btnColorVariants
+ */
+export type BtnColorVariantType = keyof typeof btnColorVariants;
+
+/**
+ * @type BtnHTMLTypeVariantType 
+ * @description Allowed list of values for HTML button type attribute
+ */
+export type BtnHTMLTypeVariantType = 'button' | 'submit' | 'reset';

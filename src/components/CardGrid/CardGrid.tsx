@@ -1,11 +1,23 @@
 import { Country } from '../../types/country';
 import { Card } from '../Card/Card';
 
+/**
+ * @interface CardGridProps
+ * @param {Country[]} results - Array of Country objects
+ * @param {Function} onCardClick - onClick function for card interactivity
+ * @description CardGridProps interface
+ */
 interface CardGridProps {
     results: Country[];
     onCardClick: Function;
 }
 
+/**
+ * @component CardGrid
+ * @description CardGrid component - Grid layout of Card components
+ * @arg {CardGridProps} props
+ * @returns {JSX.Element | null} - Return CardGrid component if results exist, a notification if results === 0, or null
+ */
 const CardGrid: React.FC<CardGridProps> = (props: CardGridProps) => {
 
     const { results, onCardClick } = props;
@@ -15,7 +27,7 @@ const CardGrid: React.FC<CardGridProps> = (props: CardGridProps) => {
     }
 
     return (
-        <div className="container mx-auto max-w-screen-xl pt-56 sm:pt-44 px-4 pb-4">
+        <div className="container-constrained pt-56 sm:pt-44 px-4 pb-4">
             {results.length === 0 && (
                 <div className="flex items-center justify-center h-64">
                     <p className="text-2xl font-bold text-gray-400 text-center">No results found. Try a different name.</p>

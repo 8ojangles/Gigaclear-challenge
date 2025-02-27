@@ -1,10 +1,26 @@
 import React from 'react';
-import { btnColorVariants, btnRoundedVariants } from './ButtonConfig';
+import {
+    btnColorVariants,
+    BtnColorVariantType,
+    BtnHTMLTypeVariantType
+} from './ButtonConfig';
+import { roundedVariants, RoundedVariantType } from '../../utilities/tailwindStylingUtils';
 
-
+/**
+ * @interface ButtonProps
+ * @param {BtnColorVariantType} [colorTheme = 'primary'] - color variant for button
+ * @param {RoundedVariantType} [borderRounded = 'none'] - border-radius variant for button
+ * @param {string} [BtnHTMLTypeVariantType] - Optional HTML type attribute for button - default 'button'
+ * @param {string} [label] - Optional Label text
+ * @param {string} [screenReaderText] - Optional screen reder text for accessibility
+ * @param {string} [title] - Optional title text
+ * @param {React.ReactNode} [icon] - Optional icon graphic (preferable SVG) for button
+ * @param {function} onClick - onClick function for button interactivity
+ */
 interface ButtonProps {
-    btnType?: 'skeleton' | 'ghost' | 'primary' | 'secondary' | 'tertiary' | 'danger' | 'default';
-    borderRounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full';
+    colorTheme?: BtnColorVariantType;
+    borderRounded?: RoundedVariantType;
+    type?: BtnHTMLTypeVariantType;
     label?: string;
     screenReaderText?: string;
     title?: string;
@@ -12,24 +28,32 @@ interface ButtonProps {
     onClick: () => void;
 }
 
+/**
+ * @component ButtonComponent
+ * @description Button component - Button component with color and border-radius variants
+ * @arg {ButtonProps} props
+ * @return {JSX.Element} - Return Button component
+ * @example <Button onClick={() => console.log('Button Clicked')} colorTheme="skeleton" borderRounded="sm" label="button" title="main button" screenReaderText="click to activate" icon={<MySVG />} />
+ */
 const ButtonComponent: React.FC<ButtonProps> = (props: ButtonProps) => {
     
     const {
-        btnType = 'primary',
+        colorTheme = 'primary',
+        borderRounded = 'none',
+        type = 'button',
         screenReaderText = 'Button',
         title = 'Button',
         label,
-        borderRounded = 'none',
         icon,
         onClick,
     } = props;
 
     return (
         <button
-            type="button"
+            type={type}
             title={title}
             onClick={onClick}
-            className={`${btnColorVariants[btnType]} ${btnRoundedVariants[borderRounded]} p-1 sm:p-2 inline-flex items-center justify-center focus:outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-500`}
+            className={`btn-base ${btnColorVariants[colorTheme]} ${roundedVariants[borderRounded]}`}
         >
             <span className="sr-only">{screenReaderText}</span>
             {label && <span>{label}</span>}

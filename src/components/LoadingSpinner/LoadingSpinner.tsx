@@ -1,23 +1,48 @@
+import {
+    zLayer,
+    ZLayerType,
+    heightVariants,
+    HeightVariantType
+} from "../../utilities/tailwindStylingUtils";
+
+/**
+ * @interface SpinnerProps
+ * @description SpinnerProps - Interface for Spinner component
+ * @param {number} [size = 6] - Tailwind sizing (rems, max=10)
+ * @param {string} [primaryColor = 'text-gray-200'] - Tailwind color class
+ * @param {string} [secondaryColor = 'fill-blue-600'] - Tailwind color class
+ * @param {ZLayerType} [zPosition = 'z50'] - zLayerType
+ * @param {HeightVariantType} [height = 'hScreen'] - Tailwind sizing
+ */
 interface SpinnerProps {
-    size?: number; // Tailwind sizing (rems, max=10)
-    primaryColor?: string; // Tailwind color class
-    secondaryColor?: string; // Tailwind color class
-    zLayer?: number;
-    height?: number; // Tailwind sizing
+    size?: number;
+    primaryColor?: string;
+    secondaryColor?: string;
+    zPosition?: ZLayerType;
+    height?: HeightVariantType;
 }
 
+
+/**
+ * @component LoadingSpinner
+ * @arg {SpinnerProps} props
+ * @description LoadingSpinner component - Spinner component for loading state
+ * @return {JSX.Element} - Return LoadingSpinner component
+ * @example <LoadingSpinner size={20} zLayer="z20" />
+ * @example <LoadingSpinner size={10} zLayer="z50" height={heightVariants['hTwoThirds]} />
+ */
 const LoadingSpinner: React.FC<SpinnerProps> = (props: SpinnerProps) => {
 
     const {
         size = 6,
         primaryColor = "text-gray-200",
         secondaryColor = "fill-blue-600",
-        zLayer = 50,
-        height ="screen"
+        zPosition = "z50",
+        height ="hScreen"
     } = props;
 
     return (
-        <div className={`container mx-auto z-${zLayer} flex justify-center items-center p-8 bg-black/25 h-${height}`}>
+        <div className={`container mx-auto ${zLayer[zPosition]} flex justify-center items-center p-8 bg-black/25 ${heightVariants[height]}`}>
             <div role="status">
                 <svg aria-hidden="true" width={size*4} height={size*4} className={`inline w-${size} h-${size} ${primaryColor} animate-spin dark:text-gray-600 ${secondaryColor}`} viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>

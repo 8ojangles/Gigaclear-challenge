@@ -4,6 +4,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn-base {
+    @apply p-1 sm:p-2 inline-flex items-center justify-center focus:outline-none focus:ring-1 focus:ring-inset focus:ring-indigo-500;
+  }
+  .btn-primary {
+    @apply bg-indigo-600 text-white hover:bg-indigo-700;
+  }
+  .btn-secondary {
+    @apply bg-gray-600 text-white hover:bg-gray-700;
+  }
+  .btn-tertiary {
+    @apply bg-white text-gray-600 hover:text-gray-700;
+  }
+  .btn-error {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+  .btn-skeleton {
+    @apply bg-white border border-gray-400 text-gray-400 hover:text-gray-500 hover:bg-gray-100;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-gray-400 hover:text-gray-500 hover:bg-gray-100;
+  }
+  .container-constrained {
+    @apply container mx-auto max-w-screen-xl;
+  }
+  .input-base {
+    @apply block w-full text-base text-gray-900 border border-gray-300 rounded-sm focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
