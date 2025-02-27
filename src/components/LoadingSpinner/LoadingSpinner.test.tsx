@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import LoadingSpinner from './LoadingSpinner';
+import { LoadingSpinner } from './LoadingSpinner';
 
 describe('LoadingSpinner', () => {
     it('should render with default props', () => {
@@ -19,7 +19,7 @@ describe('LoadingSpinner', () => {
     });
 
     it('should render with custom props', () => {
-        render(<LoadingSpinner size={8} primaryColor="text-red-200" secondaryColor="fill-green-600" zLayer={100} />);
+        render(<LoadingSpinner size={8} primaryColor="text-red-200" secondaryColor="fill-green-600" zPosition={'z50'} />);
         
         const spinnerContainer = screen.getByRole('status').parentElement;
         expect(spinnerContainer).toHaveClass('z-100');

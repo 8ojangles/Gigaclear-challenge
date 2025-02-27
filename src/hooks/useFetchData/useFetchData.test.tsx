@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import { GET_COUNTRIES, GET_CONTINENTS } from '../../API/queries';
@@ -60,10 +60,7 @@ const mocks = [
 ];
 
 const TestComponent: React.FC = () => {
-    const { loading, error, countries, continents } = useFetchData();
-
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error</div>;
+    const { countries, continents } = useFetchData();
 
     return (
         <div>
@@ -77,7 +74,9 @@ describe('useFetchData', () => {
     it('should return loading state initially', async () => {
         render(
             <MockedProvider mocks={mocks} addTypename={false}>
-                <TestComponent />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <TestComponent />
+                </Suspense>
             </MockedProvider>
         );
 
@@ -87,7 +86,9 @@ describe('useFetchData', () => {
     it('should return countries and continents data after loading', async () => {
         render(
             <MockedProvider mocks={mocks} addTypename={false}>
-                <TestComponent />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <TestComponent />
+                </Suspense>
             </MockedProvider>
         );
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Country } from './types/country';
 import { useFetchData } from './hooks/useFetchData/useFetchData';
 import { useSearchFilter } from './hooks/useSearchFilter/useSearchFilter';
@@ -10,7 +10,7 @@ import { CardGrid } from './components/CardGrid/CardGrid';
 import { Modal } from './components/Modal/Modal';
 
 const Countries: React.FC = () => {
-    const { loading, error, countries } = useFetchData();
+    const { countries, continents } = useFetchData();
     const {
         search,
         searchError,
@@ -54,18 +54,12 @@ const Countries: React.FC = () => {
                 </Header>
                 <main className="bg-slate-100 flex-1 relative">
                     <div className="container-constrained flex-1 flex">
-                        {loading && (
-                            <LoadingSpinner size={20} zPosition="z20" />
-                        )}
-                        {error && (
-                            <LoadingErrorMessage />
-                        )}
-                        {countries.length > 0 && (
-                            <CardGrid
-                                results={filteredByContinent}
-                                onCardClick={onCardClick}
-                            />
-                        )}
+                    <Suspense fallback={<LoadingSpinner size={20} zPosition="z20" />}>
+                        <CardGrid
+                            results={filteredByContinent}
+                            onCardClick={onCardClick}
+                        />
+                    </Suspense>
                     </div>
                 </main> 
             </div>

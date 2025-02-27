@@ -1,4 +1,4 @@
-import { isValidCountryInput } from './text-utilities';
+import { isValidCountryInput } from './textUtilities';
 
 describe('text-utilities', () => {
     describe('isValidCountryInput', () => {

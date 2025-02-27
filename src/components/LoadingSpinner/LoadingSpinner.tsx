@@ -40,7 +40,7 @@ const LoadingSpinner: React.FC<SpinnerProps> = (props: SpinnerProps) => {
         zPosition = "z50",
         height ="hScreen"
     } = props;
-
+    console.log('loading');
     return (
         <div className={`container mx-auto ${zLayer[zPosition]} flex justify-center items-center p-8 bg-black/25 ${heightVariants[height]}`}>
             <div role="status">
