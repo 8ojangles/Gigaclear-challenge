@@ -19,7 +19,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps) => {
         <div className="fixed z-40 inset-0 overflow-y-auto">
             <div className="flex items-center justify-center min-h-screen">
                 <div className="fixed inset-0 bg-black opacity-50" onClick={onClose}></div>
-                <section className="bg-slate-200 px-4 sm:px-6 pb-6 pt-12 rounded shadow-2xl shadow-black/50 z-20 w-11/12 sm:w-4/5 md:w-2/3 max-w-lg mx-auto relative">
+                <section className="bg-slate-200 px-4 sm:px-6 pb-6 pt-12 rounded shadow-2xl shadow-black/50 z-20 w-11/12 sm:w-4/5 md:w-2/3 max-w-lg mx-auto relative animate-fade-in-scale">
                     <div className="absolute top-2 right-1 font-medium text-sm p3 me-2 mb-2">
                         <ButtonComponent
                             borderRounded='full'

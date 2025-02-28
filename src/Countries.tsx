@@ -1,27 +1,19 @@
 import React, { Suspense, useState } from 'react';
 import { Country } from './types/country';
-import { useFetchData } from './hooks/useFetchData/useFetchData';
 import { useSearchFilter } from './hooks/useSearchFilter/useSearchFilter';
+import { ErrorBoundary } from "react-error-boundary";
 import { LoadingSpinner } from './components/LoadingSpinner/LoadingSpinner';
 import { LoadingErrorMessage } from './components/LoadingErrorMessage/LoadingErrorMessage';
 import { Header } from './components/Header/Header';
 import { SearchBar } from './components/SearchBar/SearchBar';
 import { CardGrid } from './components/CardGrid/CardGrid';
 import { Modal } from './components/Modal/Modal';
+import { GET_COUNTRIES } from './API/queries';
+import { useSuspenseQuery } from '@apollo/client';
 
 const Countries: React.FC = () => {
-    const { countries, continents } = useFetchData();
-    const {
-        search,
-        searchError,
-        continent,
-        searchedCountries,
-        filteredByContinent,
-        uniqueContinents,
-        onSearchChange,
-        onSearchClear,
-        onFilterChange,
-    } = useSearchFilter(countries);
+    const { data } = useSuspenseQuery<{ countries: Country[] }>(GET_COUNTRIES);
+    const searchFilter = useSearchFilter(data.countries);
 
     const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
@@ -40,26 +32,20 @@ const Countries: React.FC = () => {
                     title="Country Finder"
                 >
                     <SearchBar
-                        search={search}
                         searchPlaceholder="Search by country name"
-                        searchError={searchError}
-                        onSearchChange={onSearchChange}
-                        onSearchClear={onSearchClear}
-                        continent={continent}
-                        uniqueContinents={uniqueContinents}
-                        onFilterChange={onFilterChange}
-                        searchedCountries={searchedCountries}
-                        filteredByContinent={filteredByContinent}
+                        filter={searchFilter}
                     />
                 </Header>
                 <main className="bg-slate-100 flex-1 relative">
                     <div className="container-constrained flex-1 flex">
-                    <Suspense fallback={<LoadingSpinner size={20} zPosition="z20" />}>
-                        <CardGrid
-                            results={filteredByContinent}
-                            onCardClick={onCardClick}
-                        />
-                    </Suspense>
+                    <ErrorBoundary fallback={<LoadingErrorMessage />}>
+                        <Suspense fallback={<LoadingSpinner size={20} zPosition="z20" />}>
+                            <CardGrid
+                                results={searchFilter.filteredByContinent}
+                                onCardClick={onCardClick}
+                            />
+                        </Suspense>
+                    </ErrorBoundary>
                     </div>
                 </main> 
             </div>

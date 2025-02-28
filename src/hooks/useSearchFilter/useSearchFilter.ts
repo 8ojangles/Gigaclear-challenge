@@ -3,7 +3,7 @@ import { Country } from '../../types/country';
 import { getCountriesToSorted, getSearchedCountries, getFilteredByContinent, getUniqueContinents } from '../../utilities/countryUtils';
 import { isValidCountryInput } from '../../utilities/textUtilities';
 
-interface SearchFilterResult {
+export interface SearchFilterResult {
     search: string;
     searchError: boolean;
     continent: string;
@@ -17,6 +17,7 @@ interface SearchFilterResult {
 }
 
 const useSearchFilter = (countries: Country[]): SearchFilterResult => {
+
     const [search, setSearch] = useState<string>('');
     const [searchError, setSearchError] = useState<boolean>(false);
     const [continent, setContinent] = useState<string>('');
